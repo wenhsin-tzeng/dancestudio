@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Rehearsal</title>
+
+<style>
+body {
+  background-color: black;
+  color: white;
+}
+
+#videoElement {
+  margin-top: 70px;
+  margin-left: 327px;
+	width: 733px;
+	height: 550px;
+	background-color: white;
+  transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg);
+}
+#videoElement2 {
+  margin-left: -400px;
+  margin-top: -650px;
+  width: 733px;
+  height: 550px;
+  background-color: white;
+  transform: rotateY(180deg);
+   -webkit-transform:rotateY(180deg);
+}
+#videoElement3 {
+  margin-left: 1030px;
+  margin-top: -670px;
+  width: 733px;
+  height: 550px;
+  background-color: white;
+  transform: rotateY(180deg);
+   -webkit-transform:rotateY(180deg);
+}
+#text {
+  color: red;
+  margin-left: 20px;
+  font-size: 20px;
+
+}
+.words {
+  text-align: center;
+  margin-top: 50px;
+  padding-right: 35px;
+}
+button {
+  margin-left: 650px;
+  font-size: 16px;
+  border: 1.7px red dotted;
+  background-color: black;
+  color: black;
+  padding: 6px;
+  border-radius: 5px;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: -90px;
+}
+button:hover {
+  margin-left: 650px;
+  font-size: 16px;
+  border: 1.5px red solid;
+  background-color: red;
+  color: black;
+  padding: 6px;
+  border-radius: 5px;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: -90px;
+}
+.direction {
+  padding-top: 20px;
+  text-align: center;
+  animation-name: changecolor;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes changecolor {
+  from {color: black;}
+  to {color: white;}
+}
+</style>
+</head>
+
+<body>
+<div class="words">
+  <span id="text">Dance Studio |</span>
+  <body onload=display_ct();>
+  <span id='ct' ></span>
+</div>
+<div class="direction">
+  < Press F, B, W, S, Y >
+</div>
+<div id="container">
+	<video autoplay="true" id="videoElement">
+
+	</video>
+</div>
+<div id="container2">
+	<video autoplay="true" id="videoElement2">
+
+	</video>
+</div>
+<div id="container2">
+	<video autoplay="true" id="videoElement3">
+
+	</video>
+</div>
+<audio id="water" controls style="display:none">
+  <source src="water.mp3">
+</audio>
+<audio id="footsteps" controls style="display:none">
+  <source src="footsteps.m4a">
+</audio>
+<audio id="breathing" controls style="display:none">
+  <source src="breathing.mp3">
+</audio>
+<audio id="yawn" controls style="display:none">
+  <source src="yawn.mp3">
+</audio>
+<audio id="snap" controls style="display:none">
+  <source src="snapfinger.mp3">
+</audio>
+<button type="button" id="button" name="button" onclick="myFunction()">Perform</button>
+<script>
+  var video = document.querySelector("#videoElement");
+
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (stream) {
+        video.srcObject = stream;
+      })
+      .catch(function (err0r) {
+        console.log("Something went wrong!");
+      });
+  }
+  var video2 = document.querySelector("#videoElement2");
+
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          video2.srcObject = stream;
+        })
+        .catch(function (err0r) {
+          console.log("Something went wrong!");
+        });
+    }
+  var video3 = document.querySelector("#videoElement3");
+
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (stream) {
+        video3.srcObject = stream;
+      })
+      .catch(function (err0r) {
+        console.log("Something went wrong!");
+      });
+  }
+  function display_c(){
+  var refresh=1000; // Refresh rate in milli seconds
+  mytime=setTimeout('display_ct()',refresh)
+  }
+
+  function display_ct() {
+  var x = new Date()
+  document.getElementById('ct').innerHTML = x;
+  display_c();
+   }
+
+  document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyW') {
+    document.getElementById('water').play();
+  }
+  else {
+    document.getElementById('water').pause();
+  }
+  if (event.code == 'KeyF') {
+    document.getElementById('footsteps').play();
+  }
+  else {
+    document.getElementById('footsteps').pause();
+  }
+  if (event.code == 'KeyB') {
+    document.getElementById('breathing').play();
+  }
+  else {
+    document.getElementById('breathing').pause();
+  }
+  if (event.code == 'KeyY') {
+    document.getElementById('yawn').play();
+  }
+  else {
+    document.getElementById('yawn').pause();
+  }
+  if (event.code == 'KeyS') {
+    document.getElementById('snap').play();
+  }
+  else {
+    document.getElementById('snap').pause();
+  }
+  })
+  var button = document.getElementById('button');
+  function myFunction(){
+    video2.style.display = "none";
+    video3.style.display = "none";
+    button.style.visibility = "hidden";
+    video.style.width = "1000px";
+    video.style.height = "750px";
+    document.getElementById("text").style.color = "black";
+    video.style.marginLeft = "220px";
+    video.style.marginTop = "30px";
+  }
+</script>
+</body>
+</html>
